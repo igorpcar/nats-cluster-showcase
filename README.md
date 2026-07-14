@@ -1,17 +1,17 @@
-# nats-cluster-showcase
+> [!IMPORTANT]
+> This repository is intended as a technical portfolio and learning resource. All domain concepts, workflows, and architectural examples are generalized and anonymized. No proprietary source code, confidential information, or internal documentation from any employer or client is included.
 
-[!IMPORTANT]
-This repository is intended as a technical portfolio and learning resource. All domain concepts, workflows, and architectural examples are generalized and anonymized. No proprietary source code, confidential information, or internal documentation from any employer or client is included.
+# 1. nats-cluster-showcase
 
 This repository showcases a small scalable messaging infrastructure pattern based on my real-world experience implementing NATS in corporate environments. It serves as the foundational core for multi-region connectivity and edge computing.
 
 While this repository focuses on infrastructure, additional repositories will demonstrate practical applications built on top of this architecture, such as ETL pipelines, remote device management, observability platforms, and industrial automation services.
 
-## NATS
+## 1.1 NATS
 
 [NATS](https://nats.io/) is an open-source, highly performant, lightweight, and secure messaging system designed for modern distributed systems. Delivered as a single binary, it acts as a connective tissue for microservices, edge computing, and IoT devices, completely decoupling producers from consumers.
 
-### Capabilities
+### 1.1.1 Capabilities
 
 NATS supports multiple communication patterns, allowing for flexible architecture designs:
 
@@ -19,13 +19,13 @@ NATS supports multiple communication patterns, allowing for flexible architectur
 - **Request/Reply:** 1-to-1 or 1-to-N communication simulating an asynchronous API call
 - **Point-to-Point (queue groups):** Distributed queueing where only one subscriber in a designated group processes a message, providing automatic load balancing.
 
-### JetStream (persistence)
+### 1.1.2 JetStream (persistence)
 
 - **Persistent streams** with at-least-once, at-most-once, or exactly-once delivery semantics.
 - **KV & Object Stores** built natively into the cluster, eliminating the need for external caching or storage dependencies like Redis or S3 for many use cases.
 - **Stream replication** across multiple regions for disaster recovery and high availability.
 
-## Infrastructure
+##  1.2 Infrastructure
 
 This repository demonstrates a distributed NATS topology composed of:
 
@@ -70,7 +70,7 @@ Leaf nodes act as local bridges that securely connect isolated regions, private 
                                              └─────────┘                                           
 ```
 
-## Example use cases
+## 1.3 Example use cases
 
 Although this repository only provides the infrastructure layer, it can serve as the foundation for many different systems.
 
@@ -126,7 +126,7 @@ Although this repository only provides the infrastructure layer, it can serve as
                                                                                   └────────┘
 ```
 
-### Remote device management
+### 1.3.1 Remote device management
 
 Send commands from a centralized cloud platform to edge devices deployed anywhere in the world.
 
@@ -151,7 +151,7 @@ Benefits:
 - Replay capabilities
 - Historical data retention
 
-### ETL pipelines
+### 1.3.2 ETL pipelines
 
 NATS can act as a transport layer between data producers and processing services.
 
@@ -164,7 +164,7 @@ Typical use cases:
 - Aggregations
 - Historical storage
 
-### Observability Platforms
+### 1.3.3 Observability Platforms
 
 Telemetry can be consumed directly from NATS and visualized through monitoring tools.
 
@@ -192,7 +192,7 @@ In addition to authentication via credentials, the external communication betwee
 Usage of `nsc` is explained in the `nsc usage.md` file.
 
 
-## Usage
+## 1.4 Usage
 
 The `docker-compose.yaml` initiates three individual NATS servers, which are configured to compose a three-node cluster.
 
