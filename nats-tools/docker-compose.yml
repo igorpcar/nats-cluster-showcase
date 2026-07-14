@@ -1,0 +1,13 @@
+services:
+  nats-cli:
+    image: natsio/nats-box:latest
+    container_name: nats-cli
+    stdin_open: true
+    tty: true
+    networks: 
+      - nats_network
+
+networks:
+  nats_network:
+    name: nats-network
+    external: true

@@ -1,0 +1,23 @@
+services:
+  leafnode-a:
+    container_name: "leafnode-a"
+    image: nats:2.12.1
+    volumes:
+      - ./leafnode-a.conf:/etc/nats/nats-server.conf
+    command: ["-c", "/etc/nats/nats-server.conf"]
+    networks: 
+      - nats_network
+
+  leafnode-b:
+    container_name: "leafnode-b"
+    image: nats:2.12.1
+    volumes:
+      - ./leafnode-b.conf:/etc/nats/nats-server.conf
+    command: ["-c", "/etc/nats/nats-server.conf"]
+    networks: 
+      - nats_network
+
+networks:
+  nats_network:
+    name: nats-network
+    external: true

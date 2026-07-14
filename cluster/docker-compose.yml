@@ -1,0 +1,33 @@
+services:
+  cluster-node-1:
+    container_name: "n1.nats.cluster"
+    image: nats:2.12.1
+    volumes:
+      - ./nats-server-1.conf:/etc/nats/nats-server.conf
+    command: ["-c", "/etc/nats/nats-server.conf"]
+    networks: 
+      - nats_network
+
+  cluster-node-2:
+    container_name: "n2.nats.cluster"
+    image: nats:2.12.1
+    volumes:
+      - ./nats-server-2.conf:/etc/nats/nats-server.conf
+    command: ["-c", "/etc/nats/nats-server.conf"]
+    networks: 
+      - nats_network
+
+  cluster-node-3:
+    container_name: "n3.nats.cluster"
+    image: nats:2.12.1
+    volumes:
+      - ./nats-server-3.conf:/etc/nats/nats-server.conf
+    command: ["-c", "/etc/nats/nats-server.conf"]
+    networks: 
+      - nats_network
+
+networks:
+  nats_network:
+    name: nats-network
+    driver: bridge
+    attachable: true
